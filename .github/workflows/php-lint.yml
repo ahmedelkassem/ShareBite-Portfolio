@@ -32,3 +32,5 @@ jobs:
         run: php tests/problem_report_schema_test.php
       - name: Test password reset request throttling
         run: php tests/password_reset_throttle_test.php
+      - name: Check portfolio redactions and reset form escaping
+        run: php tests/portfolio_release_safety_test.php
