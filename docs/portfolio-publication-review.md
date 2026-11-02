@@ -13,9 +13,16 @@
 
 This is a **focused source review**, not a comprehensive penetration test, static-analysis certification or review of all possible data flows. No exposed access tokens were identified in the reviewed files, but this does not guarantee there are no undiscovered secrets or security bugs.
 
+## Access-control follow-up
+
+- The owner reported that the project's co-developer has agreed to sharing it for recruitment. That permission is owner-reported and not independently verified.
+- A source review found that the authorization role was previously read from the PHP session on subsequent requests. A deleted account or one whose database role changed could retain an old session role. The proposed fix re-reads the current user's account and role from MySQL for each authenticated request, and invalidates sessions without a matching account.
+- The reservation-tracking guard was moved into a standalone rule with tests for Admin, the matching Volunteer, the owning Donor and the assigned Charity. Tests also cover unrelated accounts and arbitrary IDs.
+- PHP tests check these guards **without MySQL**. A local browser test with deleted/demoted test accounts and another user's reservation ID is still necessary to confirm the full HTTP/database behavior. Do not infer that a green test suite proves the web application is penetration-tested.
+
 ## Outstanding before converting this portfolio repository to Public
 
-1. **Owner and collaborator approval:** confirm rights to publish all original PHP/CSS/SQL code and the two demo screenshots. A course or group project can have shared contributions.
+1. **Owner and collaborator approval:** the owner reports their co-developer agrees to portfolio sharing. Confirm any other rights (course policies, borrowed code and images) before public publication.
 2. **Access control and logic tests:** attempt unauthorized operations with mismatched Volunteer, Donor, Charity and Admin accounts, stale reservations and tampered record IDs. The success-path tests don't establish these defenses.
 3. **Account and session controls:** review cookie `Secure`/`HttpOnly`/`SameSite` and server session policies for later hosting, including role changes and recovery.
 4. **Charity verification decision:** registration currently creates an `Active` charity without Admin approval. That behavior is not changed by this review.
