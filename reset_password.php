@@ -153,7 +153,7 @@ include 'header.php';
                     name="email"
                     class="form-control mb-3"
                     placeholder="Email address"
-                    value="<?php echo $prefillEmail; ?>"
+                    value="<?php echo escapeHtml($prefillEmail); ?>"
                     required
                 >
 
