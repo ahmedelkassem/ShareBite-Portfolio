@@ -50,7 +50,6 @@ expectPrincipal(sharebiteCurrentAccount(25, $invalidRole), null, 'unknown role r
 $connection = file_get_contents(dirname(__DIR__) . '/db_connection.php');
 if (!is_string($connection) ||
     !str_contains($connection, 'sharebiteCurrentAccount(') ||
-    !str_contains($connection, "$_SESSION['role'] =") &&
     !str_contains($connection, 'foreach ($principal as $key => $value)')) {
     fwrite(STDERR, "The database session-refresh integration is missing.\n");
     exit(1);
