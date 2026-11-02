@@ -4,7 +4,7 @@
 
 ShareBite is a role-based web application designed to help food donors, volunteers and charity centers coordinate surplus-food donations. It combines offer discovery, reservation requests, approval workflows, charity delivery confirmation and administrative reporting in one application.
 
-**Portfolio status:** The core workflow has been verified on a clean local WampServer/MySQL installation. This curated repository is intentionally **Private** while publication rights, authorization tests and security issues are reviewed. **Live public demo: not deployed.**
+**Portfolio status:** Educational source-code showcase for recruiters. The main donation workflow was verified on a clean local WampServer/MySQL installation. Recent account-role and tracking changes passed automated CI checks, but were not retested in a local browser. **Live public demo: not deployed. Not approved for production use.**
 
 ## What problem does it solve?
 
@@ -91,7 +91,7 @@ These screenshots were captured during a **local test** on a newly imported data
 
 ![ShareBite charity center dashboard confirming a received donation](screenshots/charity-dashboard.jpg)
 
-The screenshots demonstrate a sample workflow, not production usage or real donation impact. This curated portfolio repository starts with a fresh Git history, and excludes unreviewed historical screenshots and sample food photographs. **Keep the portfolio Private until the remaining source, dependency and publication reviews are complete.**
+The screenshots demonstrate a sample workflow, not production usage or real donation impact. This curated portfolio repository starts with a fresh Git history and excludes unreviewed historical screenshots and sample food photographs. The displayed data and delivery counts are test data, not live operational results.
 
 ## Portfolio and future plans
 
@@ -102,4 +102,4 @@ The screenshots demonstrate a sample workflow, not production usage or real dona
 - [Third-party libraries, licenses and attributions](THIRD_PARTY_NOTICES.md)
 - [Database setup and restrictions](database/README.md)
 
-**Current scope:** educational full-stack portfolio project, locally tested. **Future scope:** production deployment only after a separate security, privacy, infrastructure and operations review. The repository is not yet approved for public release or live hosting.
+**Current scope:** educational full-stack portfolio source code, with the main journey tested locally and focused automated security checks. Source publication does not imply the application is ready to host or use with real accounts. **Future scope:** a separately tested and reviewed production deployment with appropriate security, privacy, infrastructure and operational controls.
