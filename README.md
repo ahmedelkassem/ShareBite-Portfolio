@@ -4,7 +4,7 @@
 
 ShareBite is a role-based web application designed to help food donors, volunteers and charity centers coordinate surplus-food donations. It combines offer discovery, reservation requests, approval workflows, charity delivery confirmation and administrative reporting in one application.
 
-**Portfolio status:** The core workflow has been verified on a clean local WampServer/MySQL installation. This curated repository is intentionally **Private** until the remaining publication, dependency and security review is completed. **Live public demo: not deployed.**
+**Portfolio status:** The core workflow has been verified on a clean local WampServer/MySQL installation. This curated repository is intentionally **Private** while publication rights, authorization tests and security issues are reviewed. **Live public demo: not deployed.**
 
 ## What problem does it solve?
 
@@ -98,6 +98,8 @@ The screenshots demonstrate a sample workflow, not production usage or real dona
 - [Recruiter-facing project summary and suggested CV wording](docs/portfolio.md)
 - [Portfolio release and later production deployment plan](docs/release-roadmap.md)
 - [Security review and unresolved risks](docs/security-review.md)
+- [Portfolio-specific security and Public-release review](docs/portfolio-publication-review.md)
+- [Third-party libraries, licenses and attributions](THIRD_PARTY_NOTICES.md)
 - [Database setup and restrictions](database/README.md)
 
 **Current scope:** educational full-stack portfolio project, locally tested. **Future scope:** production deployment only after a separate security, privacy, infrastructure and operations review. The repository is not yet approved for public release or live hosting.
