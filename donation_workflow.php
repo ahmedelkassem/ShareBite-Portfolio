@@ -33,3 +33,34 @@ function hasCharityReceivedDonation(array $reservation): bool
     return ($reservation['delivery_status'] ?? '') === 'Received'
         || ($reservation['reservation_status'] ?? '') === 'Completed';
 }
+
+/**
+ * Restrict reservation tracking to the volunteer, owner donor,
+ * assigned charity center, or administrator. Arbitrary reservation
+ * IDs must not expose other users' coordination details.
+ */
+function canViewDonationTracking(
+    array $order,
+    string $role,
+    int $userId,
+    ?int $charityCenterId = null
+): bool {
+    if ($userId <= 0) {
+        return false;
+    }
+    if ($role === 'Admin') {
+        return true;
+    }
+    if ($role === 'Volunteer') {
+        return (int)($order['volunteer_id'] ?? 0) === $userId;
+    }
+    if ($role === 'Donor') {
+        return (int)($order['donor_id'] ?? 0) === $userId;
+    }
+    if ($role === 'Charity') {
+        return $charityCenterId !== null
+            && $charityCenterId > 0
+            && (int)($order['center_id'] ?? 0) === $charityCenterId;
+    }
+    return false;
+}
