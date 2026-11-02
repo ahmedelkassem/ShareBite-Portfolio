@@ -52,4 +52,24 @@ expect(hasCharityReceivedDonation([
     'delivery_status' => 'Received',
 ]), true, 'completed received request accepted');
 
+$tracking = ['volunteer_id' => 11, 'donor_id' => 22, 'center_id' => 33];
+expect(canViewDonationTracking($tracking, 'Admin', 44), true, 'Admin may view tracking');
+expect(canViewDonationTracking($tracking, 'Volunteer', 11), true, 'volunteer may view own tracking');
+expect(canViewDonationTracking($tracking, 'Volunteer', 12), false, 'unrelated volunteer denied');
+expect(canViewDonationTracking($tracking, 'Donor', 22), true, 'own donor may view tracking');
+expect(canViewDonationTracking($tracking, 'Donor', 23), false, 'other donor denied');
+expect(canViewDonationTracking($tracking, 'Charity', 44, 33), true, 'selected charity may view tracking');
+expect(canViewDonationTracking($tracking, 'Charity', 44, 34), false, 'unrelated charity denied');
+expect(canViewDonationTracking($tracking, 'Charity', 44), false, 'charity without center denied');
+expect(canViewDonationTracking($tracking, 'Volunteer', 0), false, 'non-authenticated user denied');
+expect(canViewDonationTracking($tracking, 'Unknown', 11), false, 'unknown role denied');
+
+$trackingSource = file_get_contents(dirname(__DIR__) . '/track_order.php');
+if (!is_string($trackingSource) ||
+    !str_contains($trackingSource, 'canViewDonationTracking(') ||
+    !str_contains($trackingSource, 'if (!$canView)')) {
+    fwrite(STDERR, "Tracking page must enforce the shared role and record guard.\n");
+    exit(1);
+}
+
 echo "Donation transition tests passed." . PHP_EOL;
