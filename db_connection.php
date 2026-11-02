@@ -43,6 +43,43 @@ try {
 }
 
 
+// Refresh account permissions against the database on every request.
+// A deleted or deactivated account must not keep a previously issued role.
+if (isset($_SESSION['user_id'])) {
+    require_once __DIR__ . '/session_authorization.php';
+    $accountId = filter_var($_SESSION['user_id'], FILTER_VALIDATE_INT, [
+        'options' => ['min_range' => 1]
+    ]);
+    $account = null;
+
+    if ($accountId !== false) {
+        $accountStmt = $pdo->prepare(
+            'SELECT user_id, role, full_name, email FROM users WHERE user_id = ? LIMIT 1'
+        );
+        $accountStmt->execute([$accountId]);
+        $account = $accountStmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    $principal = sharebiteCurrentAccount($_SESSION['user_id'], $account);
+    if ($principal === null) {
+        unset(
+            $_SESSION['user_id'],
+            $_SESSION['role'],
+            $_SESSION['full_name'],
+            $_SESSION['email']
+        );
+        session_regenerate_id(true);
+    } else {
+        if (($_SESSION['role'] ?? '') !== $principal['role']) {
+            // Session identifiers should change when privileges change.
+            session_regenerate_id(true);
+        }
+        foreach ($principal as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
+    }
+}
+
 // חלק מהדפים הישנים משתמשים ב-$conn.
 $conn = $pdo;
 

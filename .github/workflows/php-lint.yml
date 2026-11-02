@@ -34,3 +34,5 @@ jobs:
         run: php tests/password_reset_throttle_test.php
       - name: Check portfolio redactions and reset form escaping
         run: php tests/portfolio_release_safety_test.php
+      - name: Test active-account role authorization
+        run: php tests/session_authorization_test.php

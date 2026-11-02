@@ -70,20 +70,9 @@ $currentUserId = (int)$_SESSION['user_id'];
 $currentRole = $_SESSION['role'] ?? '';
 
 
-// בדיקת הרשאה.
-$canView =
-    $currentRole == 'Admin' ||
-    (
-        $currentRole == 'Volunteer' &&
-        (int)$order['volunteer_id'] == $currentUserId
-    ) ||
-    (
-        $currentRole == 'Donor' &&
-        (int)$order['donor_id'] == $currentUserId
-    );
-
-
-if ($currentRole == 'Charity') {
+// Validate access to this specific reservation rather than trusting the URL.
+$myCenterId = null;
+if ($currentRole === 'Charity') {
     $myCenter = dbFetchOne("
         SELECT center_id
         FROM charity_centers
@@ -91,14 +80,15 @@ if ($currentRole == 'Charity') {
         LIMIT 1
     ", [$currentUserId]);
 
-    if (
-        $myCenter &&
-        (int)$myCenter['center_id'] == (int)$order['center_id']
-    ) {
-        $canView = true;
-    }
+    $myCenterId = $myCenter ? (int)$myCenter['center_id'] : null;
 }
 
+$canView = canViewDonationTracking(
+    $order,
+    $currentRole,
+    $currentUserId,
+    $myCenterId
+);
 
 if (!$canView) {
     redirect('index.php');
