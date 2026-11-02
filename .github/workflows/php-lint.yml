@@ -1,0 +1,34 @@
+name: PHP syntax check
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - main
+      - 'security/**'
+      - 'hardening/**'
+permissions:
+  contents: read
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+      - name: Lint every PHP source file
+        run: find . -type f -name '*.php' -print0 | xargs -0 -r -n1 php -l
+      - name: Test login throttling
+        run: php tests/login_throttle_test.php
+      - name: Test donation workflow guards
+        run: php tests/donation_state_test.php
+      - name: Verify exported database schema has no user data
+        run: php tests/schema_sql_test.php
+      - name: Verify problem report uses schema columns
+        run: php tests/problem_report_schema_test.php
+      - name: Test password reset request throttling
+        run: php tests/password_reset_throttle_test.php

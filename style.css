@@ -1,0 +1,605 @@
+/* הגדרת הצבעים והערכים הבסיסיים שבהם משתמשים בכל חלקי העיצוב. */
+:root {
+    --primary: #2e7d32;
+    --primary-dark: #1b5e20;
+    --primary-light: #43a047;
+    --accent: #ffb300;
+    --bg: #f7faf7;
+    --card: #ffffff;
+    --text: #263238;
+    --muted: #607d8b;
+    --border: #e5eee5;
+    --shadow: 0 12px 35px rgba(27, 94, 32, 0.10);
+}
+
+/* הסרת הרווחים ברירת המחדל והכללת הגבולות והריפוד בחישוב גודל האלמנטים. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* הגדרת הגופן, הרקע וצבע הטקסט הראשי של הדף. */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(67,160,71,.12), transparent 35%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* הגדרת רוחב התוכן הראשי ומיקומו במרכז הדף. */
+/* Navbar */
+
+/* עיצוב סרגל הניווט הראשי עם רקע לבן ואפקט טשטוש. */
+.site-navbar {
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 28px rgba(0,0,0,.05);
+}
+
+/* עיצוב מיוחד לסרגל הניווט של ה-Admin עם קו צהוב בתחתית. */
+/* סידור הלוגו ושם האתר בתוך סרגל הניווט. */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-dark) !important;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -.5px;
+}
+
+/* עיצוב תיבת האייקון של הלוגו ShareBite. */
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 10px 22px rgba(46,125,50,.25);
+}
+
+/* עיצוב התג שמציג את תפקיד המשתמש כמו Volunteer או Restaurant. */
+.role-badge {
+    background: #e8f5e9;
+    color: var(--primary-dark);
+    border: 1px solid #c8e6c9;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 800;
+}
+
+/* עיצוב הקישורים בסרגל הניווט. */
+.navbar .nav-link {
+    color: #455a64 !important;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 13px !important;
+    border-radius: 12px;
+    transition: .25s ease;
+}
+
+/* שינוי מראה הקישור במעבר העכבר או כאשר הוא מייצג את הדף הנוכחי. */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--primary-dark) !important;
+    background: #eef8ef;
+}
+
+/* עיצוב העיגול האדום שמציג את מספר הודעות ה-Admin. */
+.message-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    margin-left: 6px;
+    border-radius: 999px;
+    background: #dc3545;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, .22);
+}
+
+/* עיצוב קישור מיוחד ל-Admin בצבע צהוב. */
+/* עיצוב הכפתורים שנמצאים בתוך סרגל הניווט. */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white !important;
+    padding: 10px 18px;
+    border-radius: 14px;
+    font-weight: 800;
+    box-shadow: 0 10px 22px rgba(46,125,50,.22);
+    transition: .25s ease;
+}
+
+/* הזזת כפתור סרגל הניווט מעט למעלה במעבר העכבר. */
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(46,125,50,.28);
+}
+
+/* עיצוב כפתור הוספת תרומה בצבע צהוב. */
+.add-btn {
+    background: linear-gradient(135deg, var(--accent), #ffca28);
+    color: #3e2b00 !important;
+}
+
+/* עיצוב כפתור פעמון ההתראות. */
+.notification-link {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: #f1f8e9;
+    color: var(--primary-dark) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    transition: .25s;
+}
+
+/* שינוי צבע כפתור ההתראות במעבר העכבר. */
+.notification-link:hover {
+    background: var(--primary);
+    color: white !important;
+}
+
+/* עיצוב כפתור תפריט המשתמש. */
+.user-menu {
+    background: #f8fbf8;
+    border: 1px solid var(--border);
+}
+
+/* עיצוב התפריט הנפתח של המשתמש. */
+.dropdown-menu {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 10px;
+}
+
+/* עיצוב כל קישור בתוך התפריט הנפתח. */
+.dropdown-item {
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 600;
+}
+
+/* שינוי רקע הקישור בתפריט הנפתח במעבר העכבר. */
+.dropdown-item:hover {
+    background: #eef8ef;
+    color: var(--primary-dark);
+}
+
+/* Hero */
+
+/* עיצוב החלק הראשי הגדול בדף הבית עם תמונה ורקע ירוק. */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(27,94,32,.96), rgba(67,160,71,.92)),
+        url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 85px 55px;
+    border-radius: 34px;
+    margin: 25px 0 45px;
+    box-shadow: var(--shadow);
+}
+
+/* עיצוב הטקסט הקטן שמופיע מעל הכותרת הראשית. */
+.hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+/* עיצוב הכותרת הגדולה בתוך החלק הראשי. */
+.hero-title {
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+/* עיצוב תיאור האתר שמופיע מתחת לכותרת הראשית. */
+.hero-copy {
+    max-width: 650px;
+    font-size: 19px;
+    opacity: .95;
+}
+
+/* סידור כפתורי החלק הראשי אחד ליד השני. */
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+/* הגדרת הגודל והצורה של כפתורי החלק הראשי. */
+.hero-actions .btn {
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 800;
+}
+
+/* עיצוב הכפתור הראשי בתוך החלק הגדול. */
+.hero-actions .btn-primary {
+    background: white;
+    color: var(--primary-dark);
+}
+
+/* עיצוב הכפתור החיצוני בתוך החלק הגדול. */
+.hero-actions .btn-outline-primary {
+    border: 2px solid white;
+    color: white;
+}
+
+/* שינוי מראה הכפתור החיצוני במעבר העכבר. */
+.hero-actions .btn-outline-primary:hover {
+    background: white;
+    color: var(--primary-dark);
+}
+
+/* Cards */
+
+/* החלת עיצוב אחיד על הכרטיסים, הטפסים והטבלאות הלבנות. */
+.card,
+.feature-card,
+.filter-card,
+.table-responsive,
+form.bg-white,
+.bg-white {
+    background: var(--card) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 24px !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* הסתרת תוכן שיוצא מגבולות הכרטיס והוספת תנועה פשוטה. */
+.card {
+    overflow: hidden;
+    transition: .25s ease;
+}
+
+/* הזזת הכרטיס מעט למעלה במעבר העכבר. */
+.card:hover,
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* עיצוב ראש הכרטיס עם רקע ירוק. */
+/* עיצוב כרטיסי המאפיינים עם קו ירוק בצד. */
+.feature-card {
+    padding: 25px;
+    border-left: 6px solid var(--primary-light) !important;
+}
+
+/* איחוד הצבע והעובי של כותרות האתר והכרטיסים. */
+.feature-card h5,
+.card-title,
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-dark);
+    font-weight: 850;
+}
+
+/* הגדרת צבע הטקסטים המשניים וההערות הקטנות. */
+.text-muted,
+small.text-muted {
+    color: var(--muted) !important;
+}
+
+/* Buttons */
+
+/* החלת מראה אחיד על כל הכפתורים. */
+.btn {
+    border-radius: 14px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border: none;
+    transition: .25s ease;
+}
+
+/* הזזת הכפתור מעט למעלה במעבר העכבר. */
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* עיצוב הכפתורים הראשיים וכפתורי ההצלחה בצבע ירוק. */
+.btn-primary,
+.btn-success {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+}
+
+/* עיצוב כפתור האזהרה בצבע צהוב. */
+.btn-warning {
+    background: linear-gradient(135deg, var(--accent), #ffca28);
+    color: #3e2b00;
+}
+
+/* עיצוב כפתור הסכנה בצבע אדום. */
+.btn-danger {
+    background: linear-gradient(135deg, #e53935, #c62828);
+}
+
+/* עיצוב הכפתורים החיצוניים עם רקע שקוף ומסגרת ירוקה. */
+.btn-outline-primary,
+.btn-outline-success,
+.btn-outline-secondary {
+    border: 2px solid var(--primary) !important;
+    color: var(--primary-dark) !important;
+    background: transparent;
+}
+
+/* מילוי הכפתורים החיצוניים בצבע ירוק במעבר העכבר. */
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-secondary:hover {
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+/* Forms */
+
+/* עיצוב כותרות שדות הטפסים. */
+.form-label {
+    color: var(--text);
+    font-weight: 800;
+}
+
+/* עיצוב שדות הקלט ורשימות הבחירה. */
+.form-control,
+.form-select {
+    border: 2px solid var(--border);
+    border-radius: 15px;
+    padding: 12px 15px;
+    background: white;
+    color: var(--text);
+}
+
+/* שינוי מסגרת השדה בעת לחיצה או כתיבה בתוכו. */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 .22rem rgba(67,160,71,.17);
+}
+
+/* Tables */
+
+/* עיצוב הרקע והמראה של הטבלאות. */
+.table {
+    background: white;
+    color: var(--text);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* עיצוב כותרות עמודות הטבלה עם רקע ירוק. */
+.table thead th {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+/* הגדרת הרווחים ויישור התוכן בתאי הטבלה. */
+.table tbody td,
+.table tbody th {
+    padding: 15px;
+    vertical-align: middle;
+    border-color: var(--border);
+}
+
+/* שינוי רקע שורת הטבלה במעבר העכבר. */
+.table tbody tr:hover {
+    background: #f1f8e9;
+}
+
+/* Alerts */
+
+/* החלת מראה אחיד על כל הודעות ההתראה. */
+.alert {
+    border: none;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--primary) !important;
+}
+
+/* עיצוב הודעת הצלחה בצבע ירוק. */
+.alert-success {
+    background: #e8f5e9;
+    color: var(--primary-dark);
+}
+
+/* עיצוב הודעת שגיאה בצבע אדום. */
+.alert-danger {
+    background: #ffebee;
+    color: #b71c1c;
+    border-left-color: #e53935 !important;
+}
+
+/* עיצוב הודעת אזהרה בצבע צהוב. */
+.alert-warning {
+    background: #fff8e1;
+    color: #795548;
+    border-left-color: var(--accent) !important;
+}
+
+/* עיצוב הודעת מידע בצבע כחול. */
+.alert-info {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-left-color: #2196f3 !important;
+}
+
+/* Badges */
+
+/* החלת צורה מעוגלת על תגי הסטטוס. */
+.badge {
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 800;
+}
+
+/* שינוי תג ההצלחה לצבע הירוק הראשי. */
+.badge.bg-success {
+    background: var(--primary) !important;
+}
+
+/* שינוי תג האזהרה לצבע צהוב. */
+.badge.bg-warning {
+    background: var(--accent) !important;
+    color: #3e2b00 !important;
+}
+
+/* Footer */
+
+/* עיצוב החלק התחתון של האתר עם רקע ירוק כהה. */
+.site-footer {
+    background: linear-gradient(135deg, var(--primary-dark), #102b13);
+    color: white;
+    margin-top: 70px;
+    padding: 55px 0 25px;
+}
+
+/* עיצוב כותרות החלקים בתחתית האתר. */
+.site-footer h5 {
+    color: white;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* הגדרת צבע הטקסטים בתחתית האתר. */
+.site-footer p {
+    color: rgba(255,255,255,.78);
+}
+
+/* הסרת העיצוב ברירת המחדל מרשימת הקישורים בתחתית האתר. */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+/* הוספת רווח בין הקישורים בתחתית האתר. */
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+/* עיצוב הקישורים בתחתית האתר. */
+.footer-links a {
+    color: rgba(255,255,255,.78);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* שינוי צבע הקישור בתחתית האתר במעבר העכבר. */
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+/* סידור אייקוני הרשתות החברתיות אחד ליד השני. */
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+/* עיצוב כפתורי הרשתות החברתיות. */
+.footer-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.12);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* שינוי צבע אייקון הרשת החברתית במעבר העכבר. */
+.footer-social a:hover {
+    background: var(--accent);
+    color: #2b2100;
+}
+
+/* עיצוב הקו המפריד בתחתית האתר. */
+.site-footer hr {
+    border-color: rgba(255,255,255,.15);
+}
+
+/* עיצוב הטקסט שמופיע בחלק האחרון של תחתית האתר. */
+.footer-bottom {
+    text-align: center;
+    color: rgba(255,255,255,.7);
+    font-weight: 600;
+}
+
+/* Utilities */
+
+/* יצירת טקסט עם צבע מדורג בין גוונים ירוקים. */
+/* הוספת הצל האחיד לכל אלמנט שמשתמש בקלאס הזה. */
+/* הגדרת אנימציה להצגת האלמנט בהדרגה מלמטה. */
+/* הפעלת אנימציית ההופעה על האלמנט. */
+/* Responsive */
+
+/* התאמת העיצוב למסכי טלפונים ומכשירים קטנים. */
+@media (max-width: 768px) {
+
+    /* הגדלת רוחב התוכן והקטנת הרווח העליון בטלפון. */
+    /* הקטנת הריפוד והפינות של החלק הראשי בטלפון. */
+    .hero-section {
+        padding: 55px 25px;
+        border-radius: 24px;
+    }
+
+    /* הצגת כפתורי החלק הראשי ברוחב מלא בטלפון. */
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    /* הוספת רווח קטן בין קישורי סרגל הניווט בטלפון. */
+    .navbar .nav-link {
+        margin-top: 4px;
+    }
+
+    /* הצגת כפתורי סרגל הניווט ברוחב מלא בטלפון. */
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    /* התאמת הרווחים של כפתור ההתראות בטלפון. */
+    .notification-link {
+        margin: 8px 0;
+    }
+}

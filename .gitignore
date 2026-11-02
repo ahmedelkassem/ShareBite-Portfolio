@@ -1,0 +1,27 @@
+# Local credentials
+mail_config.php
+.env
+.env.*
+!.env.example
+
+# Development-only test mailer
+testmail.php
+
+# User-uploaded files
+Imges/food_*
+
+# Private database backups
+*backup*.sql
+*dump*.sql
+*.sql.gz
+*.sql.zip
+database/private/
+
+# Logs and editor files
+*.log
+logs/
+.cache/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
